@@ -8,4 +8,14 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: [
+    [
+      "@nuxtjs/google-fonts",
+      {
+        families: {
+          "Open+Sans": true,
+        },
+      },
+    ],
+  ],
 });
