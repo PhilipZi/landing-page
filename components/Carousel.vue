@@ -25,7 +25,10 @@
         v-for="i in 4"
         :key="i"
         class="w-20 rounded-3xl bg-auto cursor-pointer overflow-hidden mx-[10px] flex items-end duration-300 ease-in-out shadow-2xl"
-        :class="{ 'w-[600px]': isChecked[i] }"
+        :class="{
+          'w-[600px]': isChecked[i],
+          'pointer-events-none': isChecked[i],
+        }"
         @click.prevent="toggle(i)"
         :style="{
           'background-image': `url('https://picsum.photos/id/${
@@ -33,23 +36,33 @@
           }/600/600')`,
         }"
       >
-        <div class="text-white flex flex-nowrap">
+        <div
+          class="flex flex-nowrap glass btn-twitter pointer-events-none"
+          :class="{ 'pointer-events-auto': isChecked[i] }"
+        >
           <div
             class="bg-[#223] rounded-[50%] w-[50px] flex justify-center items-center m-[15px]"
           >
             {{ i }}
           </div>
-          <div
-            class="flex justify-center flex-col overflow-hidden h-[80px] w-[520px] opacity-0 transform translate-y-30 transition-all duration-300 ease-in-out transition-delay-300"
-            :class="{
-              'opacity-100': isChecked[i],
-              'translate-y-0': isChecked[i],
-            }"
-          >
-            <h4 class="uppercase">Item {{ i }}</h4>
-            <p class="text-[#b0b0ba] pt-[5px]">
-              Some description for item {{ i }}
-            </p>
+          <div class="flex">
+            <div
+              class="flex justify-center dark-text flex-col overflow-hidden h-[80px] w-[420px] opacity-0 transform translate-y-30 transition-all duration-300 ease-in-out transition-delay-300"
+              :class="{
+                'opacity-100': isChecked[i],
+                'translate-y-0': isChecked[i],
+              }"
+            >
+              <h4 class="uppercase">Item {{ i }}</h4>
+              <p class="pt-[5px]">Some description for item {{ i }}</p>
+            </div>
+            <button class="btn-twitter">
+              <div
+                class="bg-[#223] rounded-[50%] p-3 flex justify-center items-center m-[15px]"
+              >
+                WATCH
+              </div>
+            </button>
           </div>
         </div>
       </label>
